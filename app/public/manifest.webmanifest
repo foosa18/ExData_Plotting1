@@ -1,0 +1,9 @@
+{
+  "name": "Investing Platform",
+  "short_name": "Investing",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f3",
+  "theme_color": "#0f6e63",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

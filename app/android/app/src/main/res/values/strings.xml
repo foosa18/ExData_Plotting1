@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Investing</string>
+    <string name="title_activity_main">Investing</string>
+    <string name="package_name">com.foosa18.investing</string>
+    <string name="custom_url_scheme">com.foosa18.investing</string>
+</resources>
