@@ -1,0 +1,4 @@
+node_modules/
+dist/
+# Personal holdings stay on your machine; the app falls back to a sample portfolio without this file.
+src/data/holdings.local.ts

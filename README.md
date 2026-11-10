@@ -9,6 +9,7 @@ src/        Engine code: data loading, signals, strategies, backtesting
 data/       Local market data (data/raw/ is git-ignored)
 notebooks/  Exploratory research
 tests/      Unit tests
+app/        Web dashboard and iOS/Android app (one codebase, see app/README.md)
 ```
 
 ## Getting started
