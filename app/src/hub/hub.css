@@ -1,0 +1,127 @@
+/* Finance hub (mini project 1). Loaded only with the hub flag on; reuses the alpha's tokens and primitives. */
+.hub .brand .beta { font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 1px 7px; margin-left: auto; }
+.hub .side-group { display: grid; gap: 4px; }
+.hub .side-group .eyebrow { padding: 0 10px; }
+.hub .side-foot { justify-content: space-between; }
+.hub-tabs { grid-template-columns: repeat(5, 1fr); }
+.sample-note { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--fg-2); background: var(--surface-2); border-radius: var(--r); padding: 7px 10px; margin-bottom: 12px; }
+
+/* Layout grids: one column on phones, the named arrangement on wide screens */
+.hub-grid { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 900px) {
+  .hub-grid.home { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hub-grid.home > .hub-hero { grid-column: span 2; }
+  .hub-grid.budget { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .hub-grid.invest { grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr); }
+  .hub-grid.forecast { grid-template-columns: minmax(260px, .8fr) minmax(0, 2fr); }
+}
+@media (min-width: 900px) and (max-width: 1150px) {
+  .hub-grid.home { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hub-grid.home > .hub-hero { grid-column: span 2; }
+}
+
+/* Hero: one big number, its change, a range switch and the chart */
+.hub-hero { gap: 6px; }
+.hero-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.hero-val { font-size: 34px; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; margin-top: 2px; }
+.hero-chg { font-size: 13px; font-weight: 500; }
+.hero-chg .muted { font-family: var(--f-sans); font-weight: 400; }
+.chart.trend .line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke: var(--pos); }
+.chart.trend .area { fill: var(--pos); opacity: .08; }
+.chart.trend[data-dir="down"] .line { stroke: var(--neg); }
+.chart.trend[data-dir="down"] .area { fill: var(--neg); }
+.chart.trend .base { stroke: var(--fg-3); stroke-dasharray: 2 4; stroke-width: 1; }
+.chart.trend .dot { fill: var(--fg); }
+.chart.netbars .b-pos { fill: var(--accent); } .chart.netbars .b-neg { fill: var(--neg); }
+.chart.netbars .partial { fill-opacity: .45; stroke: currentColor; stroke-dasharray: 3 2; }
+.chart.netbars .b-pos.partial { color: var(--accent); } .chart.netbars .b-neg.partial { color: var(--neg); }
+.chart.netbars .val { fill: var(--fg-2); font-size: 10.5px; font-family: var(--f-mono); }
+.chart.netbars .chart-tt { top: -2px; }
+
+/* Safe to spend */
+.sts .big { color: var(--accent); }
+.sts .kpis { margin-top: 2px; }
+.sts .link, .fc-teaser .link { justify-self: start; }
+
+/* Budget rows: label, spent of limit, bar with a "where we should be" tick */
+.brows { display: grid; }
+.brows li { display: grid; gap: 4px; padding: 9px 14px; border-top: 1px solid var(--line); }
+.brows li:first-child { border-top: 0; }
+.br-top { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.br-top .num { font-size: 12.5px; }
+.bbar { position: relative; display: block; height: 8px; border-radius: 4px; background: var(--surface-2); }
+.bbar i { display: block; height: 100%; border-radius: 4px; background: var(--accent); }
+.bbar.warn i { background: var(--warn); } .bbar.bad i { background: var(--neg); }
+.bbar em { position: absolute; top: -3px; bottom: -3px; width: 2px; margin-left: -1px; background: var(--fg-2); border-radius: 1px; box-shadow: 0 0 0 2px var(--surface); }
+
+/* Bills with a small calendar chip */
+.bills .bill { display: flex; align-items: center; gap: 12px; padding: 9px 14px; }
+.cal { display: grid; justify-items: center; width: 40px; flex: none; border: 1px solid var(--line); border-radius: 8px; padding: 3px 0 2px; line-height: 1.1; }
+.cal b { font-family: var(--f-mono); font-size: 15px; }
+.cal i { font-style: normal; font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--fg-3); }
+
+/* Account groups */
+.agroup .acct-head { font: inherit; color: inherit; }
+.agroup .chev { font-size: 16px; width: 10px; }
+.arow { display: flex; justify-content: space-between; gap: 10px; padding: 8px 14px 8px 32px; font-size: 13px; }
+
+/* Tables (read-only variants of the screener table) */
+.tbl.static tbody tr { cursor: default; }
+.tbl.static tbody tr:hover td { background: transparent; }
+.tbl .th { display: block; padding: 10px 9px; }
+.tbl tr.grp td { background: var(--surface-2); font-weight: 600; font-size: 12px; }
+.swatch { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 8px; vertical-align: 0; }
+.pos-name { display: block; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+.stats-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* Transactions */
+.txns { margin-top: 10px; }
+.txd { margin: 0; padding: 8px 14px 6px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-3); font-weight: 600; background: var(--surface-2); border-top: 1px solid var(--line); }
+.txns .list > li:first-child { border-top: 0; }
+.tx { display: flex; align-items: center; gap: 12px; padding: 9px 14px; font-size: 13.5px; }
+.tx-av { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 12.5px; flex: none; }
+
+/* Goals */
+.goals { display: grid; }
+.goals li { display: grid; gap: 5px; padding: 11px 14px; border-top: 1px solid var(--line); }
+.goals li:first-child { border-top: 0; }
+.gbar { display: block; height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
+.gbar i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+
+/* Forecast */
+.model-btn.on { background: var(--accent-soft); }
+.model-btn.on .li-mid > :first-child { color: var(--accent); font-weight: 600; }
+.status { font-family: var(--f-mono); font-size: 10.5px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--fg-3); white-space: nowrap; }
+.status.live { color: var(--pos); border-color: currentColor; background: var(--pos-bg); }
+.goal-row { display: flex; align-items: center; gap: 10px; }
+.empty-fan { border: 1px dashed var(--line); border-radius: var(--r); padding: 10px; }
+.empty-fan svg { display: block; width: 100%; height: 90px; }
+.empty-fan path:first-child { fill: var(--surface-2); }
+.empty-fan path:last-child { stroke: var(--fg-3); stroke-dasharray: 4 4; stroke-width: 1.5; fill: none; vector-effect: non-scaling-stroke; }
+.steps { list-style: decimal; padding-left: 20px; display: grid; gap: 4px; font-size: 13px; }
+.contract { margin: 0; background: var(--surface-2); border-radius: var(--r); padding: 10px 12px; overflow-x: auto; font-size: 11.5px; line-height: 1.5; color: var(--fg-2); }
+.fc-teaser .chart { pointer-events: none; }
+@media (max-width: 899px) {
+  .hero-val { font-size: 30px; }
+  .hub .stats-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Home: main column (hero, then budget beside bills and accounts) and a side column (safe to spend, forecast) */
+.home { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.home-l, .home-r, .home-sub { display: grid; gap: 12px; min-width: 0; align-items: start; }
+@media (min-width: 900px) {
+  .home { grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr); }
+  .home-sub { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 900px) and (max-width: 1150px) {
+  .home { grid-template-columns: minmax(0, 1fr); }
+  .home-r { grid-template-columns: repeat(2, minmax(0, 1fr)); order: -1; }
+  .home-l { display: contents; }
+  .home-l > .hub-hero { order: -2; }
+}
+/* Phones: hero, safe to spend, budget, bills, accounts, forecast */
+@media (max-width: 899px) {
+  .home-l, .home-r, .home-sub, .home-sub > .stack { display: contents; }
+  .home .hub-hero { order: 1; } .home .sts { order: 2; } .home-sub > .card { order: 3; }
+  .home-sub > .stack > :first-child { order: 4; } .home-sub > .stack > :last-child { order: 5; } .home .fc-teaser { order: 6; }
+}
