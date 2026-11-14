@@ -16,7 +16,7 @@ const TABS = [
   { k: "plan", l: "Plan", sub: "Framework, workplan and decisions" },
 ] as const;
 
-function useRoute() {
+export function useRoute() {
   const read = () => (location.hash.replace(/^#/, "") || "/today").split("/").filter(Boolean);
   const [parts, setParts] = useState(read);
   useEffect(() => { const on = () => setParts(read()); addEventListener("hashchange", on); return () => removeEventListener("hashchange", on); }, []);
@@ -24,8 +24,8 @@ function useRoute() {
   return [parts, go] as const;
 }
 
-type Theme = "auto" | "light" | "dark";
-function useTheme() {
+export type Theme = "auto" | "light" | "dark";
+export function useTheme() {
   const [t, setT] = useState<Theme>(() => { try { return (localStorage.getItem("investing.theme") as Theme) || "auto"; } catch { return "auto"; } });
   const sysDark = useMedia("(prefers-color-scheme: dark)");
   useEffect(() => {
